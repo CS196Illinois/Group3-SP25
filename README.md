@@ -5,4 +5,4 @@ Project Name: PROJECT_NAME
 
 Team Members: navani2, jiaruid2
 
-Project Manager: speru4
+Project Manager: speru4, hazellu2
