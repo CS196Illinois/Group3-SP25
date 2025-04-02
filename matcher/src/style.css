@@ -1,0 +1,145 @@
+.frame {
+    background-color: #8888ff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .frame .overlap-group-wrapper {
+    background-color: #ffffff;
+    height: 768px;
+    overflow: hidden;
+    width: 1024px;
+  }
+  
+  .frame .overlap-group {
+    height: 570px;
+    left: -8px;
+    position: relative;
+    top: -23px;
+    width: 1040px;
+  }
+  
+  .frame .overlap {
+    background-color: #ddeaf6;
+    border: 1px solid;
+    border-color: #00000073;
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 276px;
+    left: 284px;
+    position: absolute;
+    top: 234px;
+    width: 495px;
+  }
+  
+  .frame .text-wrapper {
+    color: #000000;
+    font-family: "Happy Monkey-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    left: 58px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 39px;
+  }
+  
+  .frame .button {
+    all: unset;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #00000094;
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: inline-flex;
+    gap: 10px;
+    justify-content: center;
+    left: 138px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 126px;
+  }
+  
+  .frame .div {
+    all: unset;
+    box-sizing: border-box;
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1.00px;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .frame .text-wrapper-2 {
+    color: #000000;
+    font-family: "Happy Monkey-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    left: 57px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 78px;
+  }
+  
+  .frame .button-wrapper {
+    all: unset;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #00000094;
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px #00000040;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    height: 49px;
+    justify-content: center;
+    left: 856px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 79px;
+    width: 127px;
+  }
+  
+  .frame .button-2 {
+    all: unset;
+    box-sizing: border-box;
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .frame .div-wrapper {
+    all: unset;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #00000094;
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px #00000040;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    height: 49px;
+    justify-content: center;
+    left: 683px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 79px;
+    width: 127px;
+  }
+  

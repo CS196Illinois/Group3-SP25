@@ -5,4 +5,8 @@ Project Name: PROJECT_NAME
 
 Team Members: navani2, jiaruid2
 
+<<<<<<< HEAD
 Project Manager: speru4
+=======
+Project Manager: speru4, hazellu2
+>>>>>>> c69946c (add figma code)
