@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./Button";
-import "./style.css";
+import "./style2.css";
 
 export const Frame = () => {
     return (

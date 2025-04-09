@@ -22,7 +22,7 @@ import image17 from "./image-17.png";
 import image18 from "./image-18.png";
 import image19 from "./image-19.png";
 import image from "./image.png";
-import "./style.css";
+import "./style6.css";
 
 export const Frame = () => {
     return (
