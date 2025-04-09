@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Frame } from "./Frame";
+import { Frame } from "./Frame4";
 
 function App() {
   return (
