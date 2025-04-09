@@ -1,0 +1,40 @@
+.button {
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #00000094;
+    border-radius: 15px;
+    display: inline-flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.button .div {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1.00px;
+    position: relative;
+    width: fit-content;
+}
+
+.button .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.button .span {
+    font-size: 12px;
+}
+
+.button:hover {
+    background-color: #b5cdfc;
+}
