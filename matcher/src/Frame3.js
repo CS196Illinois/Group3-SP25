@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "./Button";
 import "./style3.css";
 
-export const Frame = () => {
+export const Frame3 = () => {
     return (
         <div className="frame">
             <div className="div-2">

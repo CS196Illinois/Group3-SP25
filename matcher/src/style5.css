@@ -45,7 +45,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 28px;
+    top: 12px;
 }
 
 .frame .button {
@@ -79,7 +79,7 @@
     margin-bottom: -2.50px;
     margin-left: -1.00px;
     margin-right: -1.00px;
-    margin-top: -4.50px;
+    margin-top: -3.50px;
     position: relative;
     width: fit-content;
 }
