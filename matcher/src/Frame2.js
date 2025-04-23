@@ -1,41 +1,43 @@
 import React from "react";
-import { Button } from "./Button";
 import "./style2.css";
+import { Button } from "./Button";  // if you're using a custom button component
 
-export const Frame2 = () => {
-    return (
-        <div className="frame">
-            <div className="div-2">
-                <div className="rectangle" />
+export const Frame2 = ({ goToFrame3 }) => {
+  function clickAbout() {
+    alert("We are two CS124H students!");
+  }
 
-                <div className="overlap-group">
-                    <p className="name-ID-major-year">
-                        Name: <br />
-                        <br />
-                        ID: <br />
-                        <br />
-                        Major:
-                        <br /> <br />
-                        Year: <br />
-                        <br />
-                        Email:
-                    </p>
+  return (
+    <div className="frame">
+      <div className="div-2">
+        <div className="rectangle" />
 
-                    <Button
-                        buttonClassName="design-component-instance-node"
-                        className="button-instance"
-                        spanClassName="button-2"
-                        text="Next"
-                    />
-                </div>
+        <div className="overlap-group">
+          <p className="name-id">
+            Name: <br />
+            <br />
+            ID: <br />
+            <br />
+            Major:
+            <br /> <br />
+            Year: <br />
+            <br />
+            Email:
+          </p>
 
-                <div className="text-wrapper-2">Profile Creation</div>
-
-                <button className="button-wrapper">
-                    <button className="button-3">About Us</button>
-                </button>
-            </div>
+          <button className="button button-instance" onClick={goToFrame3}>
+            <span className="button-2">Next</span>
+          </button>
         </div>
-    );
+
+        <div className="text-wrapper-2">Profile Creation</div>
+
+        <button className="button-wrapper">
+          <button onClick={clickAbout} className="button-3">About Us</button>
+        </button>
+      </div>
+    </div>
+  );
 };
+
 

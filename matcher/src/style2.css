@@ -36,7 +36,7 @@
     width: 495px;
 }
 
-.frame .name-ID-major-year {
+.frame .name-id {
     color: #000000;
     font-family: "Happy Monkey-Regular", Helvetica;
     font-size: 20px;
@@ -45,7 +45,11 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 28px;
+    top: 12px;
+    text-align: left; /* Add this */
+    padding-left: 0; /* Add this */
+    margin-left: 0; /* Add this */
+    width: calc(100% - 70px); /* Adjust width to account for left positioning */
 }
 
 .frame .button-instance {

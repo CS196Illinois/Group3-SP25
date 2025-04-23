@@ -46,6 +46,10 @@
     line-height: normal;
     position: absolute;
     top: 12px;
+    text-align: left; /* Add this */
+    padding-left: 0; /* Add this */
+    margin-left: 0; /* Add this */
+  width: calc(100% - 70px); /* Adjust width to account for left positioning */
 }
 
 .frame .button {

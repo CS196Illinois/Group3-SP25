@@ -1,18 +1,15 @@
 import React from "react";
 import "./style5.css";
+import { Button } from "./Button";  // if you're using a custom button component
 
-function clickAbout() {
-  alert("We are two CS124H students!");
-}
+export const Frame5 = ({ goToFrame6 }) => {
+  function clickAbout() {
+    alert("We are two CS124H students!");
+  }
 
-function clickFinish() {
-  alert("Matching in progress...");
-}
-
-export const Frame5 = () => {
   return (
     <div className="frame">
-      <div className="div">
+      <div className="div-2">
         <div className="rectangle" />
 
         <div className="overlap-group">
@@ -28,15 +25,15 @@ export const Frame5 = () => {
             Study Location 3:
           </p>
 
-          <button className="button text-wrapper" onClick={clickFinish}>
-            Finish
+          <button className="button button-instance" onClick={goToFrame6}>
+            <span className="button-2">Finish</span>
           </button>
         </div>
 
         <div className="text-wrapper-2">Profile Creation</div>
 
-        <button className="button-2" onClick={clickAbout}>
-          About Us
+        <button className="button-wrapper">
+          <button onClick={clickAbout} className="button-3">About Us</button>
         </button>
       </div>
     </div>
