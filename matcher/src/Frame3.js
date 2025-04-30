@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style3.css";
-import { Button } from "./Button";  // if you're using a custom button component
 
 export const Frame3 = ({ goToFrame4 }) => {
+  const [classes, setClasses] = useState(["", "", "", "", ""]);
+
   function clickAbout() {
     alert("We are two CS124H students!");
+  }
+
+  function handleChange(index, value) {
+    const updated = [...classes];
+    updated[index] = value;
+    setClasses(updated);
+  }
+
+  function handleNext() {
+    console.log("Classes:", classes);
+
+    fetch("/api/save-classes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ classes }),
+    }).then(() => goToFrame4());
   }
 
   return (
@@ -13,19 +30,19 @@ export const Frame3 = ({ goToFrame4 }) => {
         <div className="rectangle" />
 
         <div className="overlap-group">
-          <p className="class-class">
-            Class 1: <br />
-            <br />
-            Class 2: <br />
-            <br />
-            Class 3:
-            <br /> <br />
-            Class 4: <br />
-            <br />
-            Class 5:
-          </p>
+          <div className="form-fields">
+            {classes.map((cls, idx) => (
+              <div className="form-row" key={idx}>
+                <label>Class {idx + 1}:</label>
+                <input
+                  value={cls}
+                  onChange={(e) => handleChange(idx, e.target.value)}
+                />
+              </div>
+            ))}
+          </div>
 
-          <button className="button button-instance" onClick={goToFrame4}>
+          <button className="button button-instance" onClick={handleNext}>
             <span className="button-2">Next</span>
           </button>
         </div>
@@ -39,3 +56,4 @@ export const Frame3 = ({ goToFrame4 }) => {
     </div>
   );
 };
+

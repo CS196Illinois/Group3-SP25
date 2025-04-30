@@ -115,3 +115,31 @@
     white-space: nowrap;
     width: fit-content;
 }
+
+.form-fields {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: "Happy Monkey-Regular", Helvetica;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .form-row label {
+    width: 100px;
+  }
+  
+  .form-row input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: "Happy Monkey-Regular", Helvetica;
+  }
+  
