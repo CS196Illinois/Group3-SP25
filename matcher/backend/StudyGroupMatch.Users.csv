@@ -1,0 +1,5 @@
+_id,name,email,major,year,classes[0],classes[1],classes[2],classes[3],classes[4],availability[0],availability[1],preferences.studyStyle,preferences.groupSize,preferences.studyLocation
+67c8b509c7ed00f38fab7c25,Vili Dai,jiaruid2@illinois.edu,Information Science + Data Science,Freshman,CS 124,STAT 107,MATH 241,IS 266,EALC 230,Wednesday 4PM-5PM,Thursday 5PM-6PM,quiet,small,Grainger Engineering Library
+67c8c10ec7ed00f38fab7c29,Hazel Lu,hazellu2@illinois.edu,Statistics + Computer Science,Freshman,CS 128,CS 107,MATH 231,,,Wednesday 4PM-5PM,Thursday 4PM-5PM,quite,medium,Siebel Center for CS
+67c8c1c0c7ed00f38fab7c2b,Arkin,arkin2@illinois.edu,Information Science + Data Science,Freshman,CS 124,STAT 107,,,,Wednesday 4PM-5PM,Thursday 6PM-7PM,interactive,large,Grainger Engineering Library
+67c8c294c7ed00f38fab7c2e,Shreya,speru4@illinois.edu,Computer Science,Junior,CS 411,,,,,Wednesday 4PM-5PM,Thursday 5PM-6PM,interactive,large,Siebel Center for CS
