@@ -2,47 +2,48 @@ import React, { useState } from "react";
 import "./style4.css";
 
 export const Frame4 = ({ goToFrame5 }) => {
-  const [times, setTimes] = useState(["", "", "", "", ""]);
+  const [availability, setAvailability] = useState(["", ""]);
 
   function clickAbout() {
     alert("We are two CS124H students!");
   }
 
   function handleChange(idx, val) {
-    const copy = [...times];
+    const copy = [...availability];
     copy[idx] = val;
-    setTimes(copy);
+    setAvailability(copy);
   }
 
   function handleNext() {
-    console.log("Times:", times);
-    // send to your backend if needed:
-    fetch("/api/save-times", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ times }),
-    }).then(() => goToFrame5());
+    // Format the data to match our CSV structure with availability array
+    const availabilityData = {
+      availability: availability
+    };
+    
+    console.log("Availability Data:", availabilityData);
+    
+    // Pass the data to the parent component and move to the next frame
+    goToFrame5(availabilityData);
   }
 
   return (
     <div className="frame">
       <div className="div-2">
         <div className="rectangle" />
-
         <div className="overlap-group">
           <div className="form-fields">
-            {times.map((t, i) => (
+            {availability.map((time, i) => (
               <div className="form-row" key={i}>
-                <label>Time {i + 1}:</label>
+                <label>Availability {i + 1}:</label>
                 <input
                   type="text"
-                  value={t}
+                  value={time}
                   onChange={(e) => handleChange(i, e.target.value)}
+                  placeholder={`Enter time (e.g., Monday 4PM-5PM)`}
                 />
               </div>
             ))}
           </div>
-
           <button
             className="button button-instance"
             onClick={handleNext}
@@ -50,55 +51,11 @@ export const Frame4 = ({ goToFrame5 }) => {
             <span className="button-2">Next</span>
           </button>
         </div>
-
         <div className="text-wrapper-2">Profile Creation</div>
-
-        <button className="button-wrapper" onClick={clickAbout}>
-          <span className="button-3">About Us</span>
+        <button className="button-wrapper">
+          <button onClick={clickAbout} className="button-3">About Us</button>
         </button>
       </div>
     </div>
   );
 };
-
-// import React from "react";
-// import { Button } from "./Button";
-// import "./style4.css";
-
-// function clickAbout() {
-//     alert("We are two CS124H students!");
-// }
-
-// export const Frame = () => {
-//     return (
-//         <div className="frame">
-//             <div className="div-2">
-//                 <div className="rectangle" />
-
-//                 <div className="overlap-group">
-//                     <p className="time-time-time">
-//                         Time 1: <br />
-//                         <br />
-//                         Time 2: <br />
-//                         <br />
-//                         Time 3:
-//                         <br /> <br />
-//                         Time 4: <br />
-//                         <br />
-//                         Time 5:
-//                     </p>
-
-//                     <button className="button button-instance">
-//                         <span className="button-2">Next</span>
-//                     </button>
-//                 </div>
-
-//                 <div className="text-wrapper-2">Profile Creation</div>
-
-//                 <button className="button-wrapper">
-//                     <button onClick={clickAbout} button className="button-3">About Us</button>
-//                 </button>
-//             </div>
-//         </div>
-//     );
-// };

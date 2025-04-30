@@ -13,17 +13,22 @@ export const Frame2 = ({ goToFrame3 }) => {
   }
 
   function handleNext() {
-    const userData = { name, id, major, year, email };
-    console.log("Saving to CSV:", userData);
-
-    // Send data to backend to write to CSV (see Part 2)
-    fetch("/api/save", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    }).then(() => goToFrame3());
+    // Create the user data object to pass to the parent component
+    const userData = { 
+      name, 
+      id, 
+      major, 
+      year, 
+      email 
+    };
+    
+    console.log("User Profile Data:", userData);
+    
+    // Pass the data to the parent component and move to the next frame
+    goToFrame3(userData);
   }
-return (
+
+  return (
     <div className="frame">
       <div className="div-2">
         <div className="rectangle" />
@@ -50,14 +55,11 @@ return (
               <input value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
           </div>
-
           <button className="button button-instance" onClick={handleNext}>
             <span className="button-2">Next</span>
           </button>
         </div>
-
         <div className="text-wrapper-2">Profile Creation</div>
-
         <button className="button-wrapper">
           <button onClick={clickAbout} className="button-3">About Us</button>
         </button>
@@ -65,5 +67,3 @@ return (
     </div>
   );
 };
-
-
