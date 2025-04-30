@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import Papa from "papaparse";
 import InputForm from "./InputForm";
-import Data from 'StudyGroupMatch.Users.csv';
+import Data from './StudyGroupMatch.Users.csv';
 import { Frame2 } from "./Frame2";
 import { Frame3 } from "./Frame3";
 import { Frame4 } from "./Frame4";
