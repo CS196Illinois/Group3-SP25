@@ -8,6 +8,58 @@ function App() {
   const [currentView, setCurrentView] = useState("main");
   const [data, setData] = useState([]);
   const [topMatches, setTopMatches] = useState([]);
+  const [lastAddedUser, setLastAddedUser] = useState(null);
+
+  
+  const calculateMatchesForUser = (targetUser, allUsers) => {
+    if (!targetUser || allUsers.length < 2) return [];
+    
+    return allUsers
+      .filter(user => user.email !== targetUser.email) 
+      .map(user => {
+        let score = 0;
+        
+        // Classes matching (5pts max)
+        let classMatches = 0;
+        for (let i = 0; i < 5; i++) {
+          if (targetUser[`classes[${i}]`] && user[`classes[${i}]`] && 
+              targetUser[`classes[${i}]`] === user[`classes[${i}]`]) {
+            classMatches++;
+          }
+        }
+        score += Math.min(classMatches, 5);
+        
+        // Availability matching (5pts max)
+        for (let i = 0; i < 2; i++) {
+          if (targetUser[`availability[${i}]`] && user[`availability[${i}]`] && 
+              targetUser[`availability[${i}]`] === user[`availability[${i}]`]) {
+            score += 2.5;
+          }
+        }
+        
+        // Preferences matching
+        if (targetUser["preferences.studyStyle"] === user["preferences.studyStyle"]) score += 3;
+        if (targetUser["preferences.groupSize"] === user["preferences.groupSize"]) score += 2;
+        if (targetUser["preferences.studyLocation"] === user["preferences.studyLocation"]) score += 1;
+        
+        // Major matching
+        if (targetUser.major === user.major) score += 1;
+        
+        return {
+          user,
+          score: Math.min(score, 17), // Max possible score
+          sharedClasses: [...Array(5)]
+            .map((_, i) => 
+              targetUser[`classes[${i}]`] && 
+              targetUser[`classes[${i}]`] === user[`classes[${i}]`] ? 
+              targetUser[`classes[${i}]`] : null
+            )
+            .filter(Boolean)
+        };
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5); // Get top 5
+  };
 
   
   const handleFileUpload = (e) => {
@@ -16,13 +68,17 @@ function App() {
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
-        setData(results.data);
-        calculateTopMatches(results.data);
+        if (results.data.length > 0) {
+          setData(results.data);
+          const lastUser = results.data[results.data.length - 1];
+          setLastAddedUser(lastUser);
+          setTopMatches(calculateMatchesForUser(lastUser, results.data));
+        }
       },
     });
   };
 
-  // Fetch initial data (unchanged)
+  // Load initial data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,54 +99,27 @@ function App() {
     fetchData();
   }, []);
 
-  
-  const calculateTopMatches = (userData) => {
-    if (userData.length < 2) {
-      setTopMatches([]);
-      return;
-    }
-
-    const allPairs = [];
-    
-    
-    for (let i = 0; i < userData.length; i++) {
-      for (let j = i + 1; j < userData.length; j++) {
-        const user1 = userData[i];
-        const user2 = userData[j];
-        
-        let score = 0;
-        if (user1.major === user2.major) score += 2;
-        if (user1["preferences.studyStyle"] === user2["preferences.studyStyle"]) score += 3;
-        
-        allPairs.push({
-          user1: user1.name,
-          user2: user2.name,
-          email1: user1.email,
-          email2: user2.email,
-          score
-        });
-      }
-    }
-
-    const top5 = allPairs
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5);
-    
-    setTopMatches(top5);
-  };
-
   const handleFormComplete = (newUserData) => {
     const transformedData = {
       name: newUserData.name,
       major: newUserData.major,
       email: newUserData.email,
       year: newUserData.year,
-      "preferences.studyStyle": newUserData["preferences.studyStyle"]
+      "preferences.studyStyle": newUserData["preferences.studyStyle"],
+      "preferences.groupSize": newUserData["preferences.groupSize"],
+      "preferences.studyLocation": newUserData["preferences.studyLocation"],
+      ...Object.fromEntries(
+        [...Array(5)].map((_, i) => [`classes[${i}]`, newUserData[`classes[${i}]`]])
+      ),
+      ...Object.fromEntries(
+        [...Array(2)].map((_, i) => [`availability[${i}]`, newUserData[`availability[${i}]`]])
+      )
     };
     
     const updatedData = [...data, transformedData];
     setData(updatedData);
-    calculateTopMatches(updatedData);
+    setLastAddedUser(transformedData);
+    setTopMatches(calculateMatchesForUser(transformedData, updatedData));
     setCurrentView("main");
   };
 
@@ -119,24 +148,28 @@ function App() {
             </div>
           </div>
 
-          {/* show top 5 matches */}
-          {topMatches.length > 0 && (
+          {/* Show matches only for the last added user */}
+          {topMatches.length > 0 && lastAddedUser && (
             <div className="top-matches">
-              <h2>Top 5 Matches</h2>
+              <h2>Top 5 Matches for {lastAddedUser.name}</h2>
               <table className="matches-table">
                 <thead>
                   <tr>
-                    <th>User 1</th>
-                    <th>User 2</th>
-                    <th>Match Score</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Score (Max 17)</th>
+                    <th>Shared Classes</th>
+                    <th>Study Style</th>
                   </tr>
                 </thead>
                 <tbody>
                   {topMatches.map((match, index) => (
                     <tr key={index}>
-                      <td>{match.user1} ({match.email1})</td>
-                      <td>{match.user2} ({match.email2})</td>
+                      <td>{match.user.name}</td>
+                      <td>{match.user.email}</td>
                       <td>{match.score.toFixed(1)}</td>
+                      <td>{match.sharedClasses.join(', ') || 'None'}</td>
+                      <td>{match.user["preferences.studyStyle"]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -144,7 +177,6 @@ function App() {
             </div>
           )}
 
-          
           <div className="data-section">
             <h2>Current Users ({data.length})</h2>
             {data.length > 0 ? (

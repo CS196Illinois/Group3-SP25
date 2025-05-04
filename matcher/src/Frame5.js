@@ -40,7 +40,7 @@ export const Frame5 = ({ goToFrame6 }) => {
                 type="text"
                 value={studyStyle} 
                 onChange={(e) => setStudyStyle(e.target.value)} 
-                placeholder="e.g., Quiet, Group, Visual"
+                placeholder="e.g., Quiet, Interactive"
               />
             </div>
             <div className="form-row">
