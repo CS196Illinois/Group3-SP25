@@ -9,7 +9,7 @@ function App() {
   const [data, setData] = useState([]);
   const [topMatches, setTopMatches] = useState([]);
 
-  // Handle CSV file upload (unchanged)
+  
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     Papa.parse(file, {
@@ -43,7 +43,7 @@ function App() {
     fetchData();
   }, []);
 
-  // Calculate top 5 matches
+  
   const calculateTopMatches = (userData) => {
     if (userData.length < 2) {
       setTopMatches([]);
@@ -52,7 +52,7 @@ function App() {
 
     const allPairs = [];
     
-    // Generate all possible unique pairs
+    
     for (let i = 0; i < userData.length; i++) {
       for (let j = i + 1; j < userData.length; j++) {
         const user1 = userData[i];
@@ -72,7 +72,6 @@ function App() {
       }
     }
 
-    // Get top 5 pairs
     const top5 = allPairs
       .sort((a, b) => b.score - a.score)
       .slice(0, 5);
@@ -80,7 +79,6 @@ function App() {
     setTopMatches(top5);
   };
 
-  // Handle form submission (unchanged UI)
   const handleFormComplete = (newUserData) => {
     const transformedData = {
       name: newUserData.name,
@@ -100,7 +98,6 @@ function App() {
     <div className="App">
       {currentView === "main" ? (
         <div className="main-container">
-          {/* Keep your original create/upload UI exactly the same */}
           <h1>Study Group Matching System</h1>
           
           <div className="controls-section">
@@ -122,7 +119,7 @@ function App() {
             </div>
           </div>
 
-          {/* Only show top 5 matches */}
+          {/* show top 5 matches */}
           {topMatches.length > 0 && (
             <div className="top-matches">
               <h2>Top 5 Matches</h2>
@@ -147,7 +144,7 @@ function App() {
             </div>
           )}
 
-          {/* Keep your original user table */}
+          
           <div className="data-section">
             <h2>Current Users ({data.length})</h2>
             {data.length > 0 ? (
