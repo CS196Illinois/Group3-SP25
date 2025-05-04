@@ -1,5 +1,31 @@
 _id,name,email,major,year,classes[0],classes[1],classes[2],classes[3],classes[4],availability[0],availability[1],preferences.studyStyle,preferences.groupSize,preferences.studyLocation
-67c8b509c7ed00f38fab7c25,Vili Dai,jiaruid2@illinois.edu,Information Science + Data Science,Freshman,CS 124,STAT 107,MATH 241,IS 266,EALC 230,Wednesday 4PM-5PM,Thursday 5PM-6PM,quiet,small,Grainger Engineering Library
-67c8c10ec7ed00f38fab7c29,Hazel Lu,hazellu2@illinois.edu,Statistics + Computer Science,Freshman,CS 128,CS 107,MATH 231,,,Wednesday 4PM-5PM,Thursday 4PM-5PM,quite,medium,Siebel Center for CS
-67c8c1c0c7ed00f38fab7c2b,Arkin,arkin2@illinois.edu,Information Science + Data Science,Freshman,CS 124,STAT 107,,,,Wednesday 4PM-5PM,Thursday 6PM-7PM,interactive,large,Grainger Engineering Library
-67c8c294c7ed00f38fab7c2e,Shreya,speru4@illinois.edu,Computer Science,Junior,CS 411,,,,,Wednesday 4PM-5PM,Thursday 5PM-6PM,interactive,large,Siebel Center for CS
+67c8d100c7ed00f38fab7c30,Leo Zhang,lzhang3@illinois.edu,Computer Science,Freshman,CS 124,MATH 241,STAT 107,,,"Wednesday 4PM-5PM","Thursday 5PM-6PM",quiet,small,Grainger Engineering Library
+67c8d11ac7ed00f38fab7c31,Emily Chen,echen9@illinois.edu,Statistics,Freshman,STAT 200,CS 105,MATH 234,EALC 120,,Wednesday 4PM-5PM,Thursday 4PM-5PM,quiet,medium,Main Library
+67c8d124c7ed00f38fab7c32,Noah Patel,npatel4@illinois.edu,Computer Engineering,Sophomore,CS 233,PHYS 212,EE 210,CS 225,,Wednesday 5PM-6PM,Thursday 5PM-6PM,interactive,large,Siebel Center for CS
+67c8d13bc7ed00f38fab7c33,Maya Lin,mlin5@illinois.edu,Information Sciences,Junior,IS 203,IS 226,PSYC 201,,,"Wednesday 4PM-5PM","Thursday 6PM-7PM",quiet,small,Main Library
+67c8d1ffc7ed00f38fab7c40,Alice Xu,axu7@illinois.edu,Mathematics + Computer Science,Freshman,MATH 241,CS 124,STAT 107,,,"Wednesday 5PM-6PM","Thursday 6PM-7PM",quiet,small,Grainger Engineering Library
+67c8d20ac7ed00f38fab7c41,Brandon Lee,blee11@illinois.edu,Computer Science,Senior,CS 411,CS 421,CS 440,CS 465,,Wednesday 4PM-5PM,Thursday 4PM-5PM,interactive,large,Siebel Center for CS
+67c8d214c7ed00f38fab7c42,Chloe Nguyen,cnguyen2@illinois.edu,Information Sciences + Data Science,Sophomore,IS 226,STAT 107,MATH 234,,,"Wednesday 6PM-7PM","Thursday 5PM-6PM",quiet,medium,Main Library
+67c8d21fc7ed00f38fab7c43,Daniel Kim,dkim8@illinois.edu,Electrical Engineering,Junior,EE 210,CS 233,MATH 285,,,"Wednesday 4PM-5PM","Thursday 4PM-5PM",interactive,medium,Everitt Lab
+67c8d229c7ed00f38fab7c44,Ella Thomas,ethomas3@illinois.edu,Statistics,Freshman,STAT 200,CS 107,MATH 221,EALC 105,,Wednesday 3PM-4PM,Thursday 5PM-6PM,quiet,small,Main Library
+67c8d233c7ed00f38fab7c45,Frankie Diaz,fdiaz6@illinois.edu,Computer Science,Sophomore,CS 225,LING 100,CS 128,STAT 107,,Wednesday 5PM-6PM,Thursday 6PM-7PM,interactive,medium,Siebel Center for CS
+67c8d144c7ed00f38fab7c34,Aidan Kim,akim7@illinois.edu,Electrical Engineering,Senior,EE 310,PHYS 214,MATH 285,CS 225,,Wednesday 3PM-4PM,Thursday 5PM-6PM,interactive,medium,Everitt Lab
+67c8d155c7ed00f38fab7c35,Nina Lopez,nlopez3@illinois.edu,Information Science + Data Science,Freshman,CS 128,STAT 207,MATH 231,,,"Wednesday 4PM-5PM","Thursday 4PM-5PM",quiet,medium,Grainger Engineering Library
+67c8d162c7ed00f38fab7c36,Joshua Park,jpark6@illinois.edu,Computer Science,Junior,CS 374,CS 421,CS 361,CS 225,,Wednesday 5PM-6PM,Thursday 6PM-7PM,interactive,large,Siebel Center for CS
+67c8d17bc7ed00f38fab7c37,Sophia Wang,swang8@illinois.edu,Computer Science + Linguistics,Freshman,IS 266,CS 124,STAT 107,MATH 231,,Wednesday 4PM-5PM,Thursday 5PM-6PM,quiet,small,Main Library
+67c8d188c7ed00f38fab7c38,Ethan Rivera,erivera2@illinois.edu,Statistics,Freshman,STAT 100,STAT 207,MATH 234,,,"Wednesday 4PM-5PM","Thursday 4PM-5PM",quiet,medium,Main Library
+67c8d19dc7ed00f38fab7c39,Isabella Tran,itran4@illinois.edu,Computer Science,Sophomore,CS 225,PHIL 102,CS 128,CS 210,,Wednesday 6PM-7PM,Thursday 5PM-6PM,interactive,medium,Siebel Center for CS
+67c8d23cc7ed00f38fab7c46,Grace Patel,gpatel9@illinois.edu,Finance + Data Science,Freshman,STAT 107,CS 124,MATH 234,,,"Wednesday 4PM-5PM","Thursday 5PM-6PM",quiet,small,Grainger Engineering Library
+67c8d246c7ed00f38fab7c47,Henry Zhao,hzhao2@illinois.edu,Mechanical Engineering,Junior,ME 200,PHYS 213,MATH 285,,,"Wednesday 6PM-7PM","Thursday 4PM-5PM",interactive,large,Mechanical Engineering Lab
+67c8d250c7ed00f38fab7c48,Ivy Chen,ichen5@illinois.edu,Computer Science + Linguistics,Freshman,IS 266,CS 124,STAT 107,,,"Wednesday 4PM-5PM","Thursday 6PM-7PM",quiet,small,Main Library
+67c8d25ac7ed00f38fab7c49,Jack Morgan,jmorgan4@illinois.edu,Computer Science + Philosophy,Senior,CS 411,CS 421,CS 440,CS 473,,Wednesday 5PM-6PM,Thursday 5PM-6PM,interactive,large,Siebel Center for CS
+67c8d260c7ed00f38fab7c50,Liam Carter,lcarter4@illinois.edu,Information Science + Data Science,Freshman,IS 266,CS 124,STAT 207,MATH 234,,Wednesday 5PM-6PM,Thursday 4PM-5PM,quiet,small,Main Library
+67c8d261c7ed00f38fab7c51,Zara Patel,zpatel6@illinois.edu,Chemistry,Sophomore,CHEM 232,CHEM 222,MATH 231,PHYS 211,,Wednesday 4PM-5PM,Thursday 6PM-7PM,interactive,medium,Noyes Lab
+67c8d262c7ed00f38fab7c52,Ethan Nguyen,enguyen5@illinois.edu,Mathematics,Junior,MATH 347,MATH 416,STAT 400,CS 173,,Wednesday 6PM-7PM,Thursday 4PM-5PM,quiet,small,Altgeld Hall
+67c8d263c7ed00f38fab7c53,Nora Kim,nkim9@illinois.edu,Computer Science + Physics,Senior,CS 421,PHYS 325,CS 374,PHYS 435,,Wednesday 5PM-6PM,Thursday 6PM-7PM,interactive,large,Siebel Center for CS
+67c8d264c7ed00f38fab7c54,Oscar Lin,olin6@illinois.edu,Information Science + Data Science,Sophomore,IS 203,IS 247,STAT 207,MATH 234,,Wednesday 3PM-4PM,Thursday 4PM-5PM,quiet,medium,Main Library
+67c8d265c7ed00f38fab7c55,Ava Green,agreen3@illinois.edu,Chemistry,Freshman,CHEM 102,MATH 220,STAT 107,CS 105,,Wednesday 4PM-5PM,Thursday 5PM-6PM,quiet,small,Grainger Engineering Library
+67c8d266c7ed00f38fab7c56,Mason Zhou,mzhou4@illinois.edu,Mathematics,Senior,MATH 441,MATH 444,CS 225,STAT 410,,Wednesday 5PM-6PM,Thursday 6PM-7PM,interactive,medium,Altgeld Hall
+67c8d267c7ed00f38fab7c57,Sophia Li,sli11@illinois.edu,Computer Science + Physics,Junior,PHYS 212,CS 225,PHYS 213,MATH 241,,Wednesday 6PM-7PM,Thursday 5PM-6PM,quiet,large,Siebel Center for CS
+67c8d268c7ed00f38fab7c58,Ben Taylor,btaylor8@illinois.edu,Information Science + Data Science,Freshman,CS 124,STAT 107,MATH 234,IS 266,,Wednesday 4PM-5PM,Thursday 5PM-6PM,interactive,small,Main Library
+67c8d269c7ed00f38fab7c59,Emily Wu,ewu3@illinois.edu,Chemistry,Sophomore,CHEM 233,CHEM 236,PHYS 213,MATH 231,,Wednesday 3PM-4PM,Thursday 6PM-7PM,quiet,medium,Noyes Lab

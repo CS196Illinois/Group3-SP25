@@ -49,7 +49,7 @@ export const Frame5 = ({ goToFrame6 }) => {
                 type="text"
                 value={groupSize} 
                 onChange={(e) => setGroupSize(e.target.value)} 
-                placeholder="e.g., 2-3, 4-5, Solo"
+                placeholder="e.g., Small: 2-3, Medium: 4-5, Large:7-8 "
               />
             </div>
             <div className="form-row">
@@ -58,7 +58,7 @@ export const Frame5 = ({ goToFrame6 }) => {
                 type="text"
                 value={spot1} 
                 onChange={(e) => setSpot1(e.target.value)} 
-                placeholder="e.g., Grainger Library"
+                placeholder="e.g., Main Library"
               />
             </div>
             <div className="form-row">
@@ -67,7 +67,7 @@ export const Frame5 = ({ goToFrame6 }) => {
                 type="text"
                 value={spot2} 
                 onChange={(e) => setSpot2(e.target.value)} 
-                placeholder="e.g., ECEB"
+                placeholder="e.g., Grainger Engineering Library"
               />
             </div>
             <div className="form-row">
@@ -76,7 +76,7 @@ export const Frame5 = ({ goToFrame6 }) => {
                 type="text"
                 value={spot3} 
                 onChange={(e) => setSpot3(e.target.value)} 
-                placeholder="e.g., Siebel Center"
+                placeholder="e.g., Siebel Center for CS"
               />
             </div>
           </div>

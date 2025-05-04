@@ -1,16 +1,15 @@
-import logo from './logo.svg';
 import React, { useState, useEffect } from "react";
 import './App.css';
 import Papa from "papaparse";
-import InputForm from "./InputForm";
 import Data from './StudyGroupMatch.Users.csv';
 import FormFlow from "./FormFlow";
 
 function App() {
-  const [currentView, setCurrentView] = useState("main"); // "main" or "form"
+  const [currentView, setCurrentView] = useState("main");
   const [data, setData] = useState([]);
-  
-  // Handle CSV file upload
+  const [topMatches, setTopMatches] = useState([]);
+
+  // Handle CSV file upload (unchanged)
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     Papa.parse(file, {
@@ -18,11 +17,12 @@ function App() {
       skipEmptyLines: true,
       complete: (results) => {
         setData(results.data);
+        calculateTopMatches(results.data);
       },
     });
   };
-  
-  // Fetch initial data on component mount
+
+  // Fetch initial data (unchanged)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,30 +42,65 @@ function App() {
     };
     fetchData();
   }, []);
-  
-  // Handle completed form submission
+
+  // Calculate top 5 matches
+  const calculateTopMatches = (userData) => {
+    if (userData.length < 2) {
+      setTopMatches([]);
+      return;
+    }
+
+    const allPairs = [];
+    
+    // Generate all possible unique pairs
+    for (let i = 0; i < userData.length; i++) {
+      for (let j = i + 1; j < userData.length; j++) {
+        const user1 = userData[i];
+        const user2 = userData[j];
+        
+        let score = 0;
+        if (user1.major === user2.major) score += 2;
+        if (user1["preferences.studyStyle"] === user2["preferences.studyStyle"]) score += 3;
+        
+        allPairs.push({
+          user1: user1.name,
+          user2: user2.name,
+          email1: user1.email,
+          email2: user2.email,
+          score
+        });
+      }
+    }
+
+    // Get top 5 pairs
+    const top5 = allPairs
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5);
+    
+    setTopMatches(top5);
+  };
+
+  // Handle form submission (unchanged UI)
   const handleFormComplete = (newUserData) => {
-    // Add the new user to our data array
-    setData(prevData => [...prevData, transformUserData(newUserData)]);
-    // Return to main view
+    const transformedData = {
+      name: newUserData.name,
+      major: newUserData.major,
+      email: newUserData.email,
+      year: newUserData.year,
+      "preferences.studyStyle": newUserData["preferences.studyStyle"]
+    };
+    
+    const updatedData = [...data, transformedData];
+    setData(updatedData);
+    calculateTopMatches(updatedData);
     setCurrentView("main");
   };
-  
-  // Transform user data to flat format for display in the table
-  const transformUserData = (userData) => {
-    return {
-      name: userData.name,
-      major: userData.major,
-      email: userData.email,
-      year: userData.year,
-      "preferences.studyStyle": userData.preferences.studyStyle
-    };
-  };
-  
+
   return (
     <div className="App">
       {currentView === "main" ? (
         <div className="main-container">
+          {/* Keep your original create/upload UI exactly the same */}
           <h1>Study Group Matching System</h1>
           
           <div className="controls-section">
@@ -86,7 +121,33 @@ function App() {
               />
             </div>
           </div>
-          
+
+          {/* Only show top 5 matches */}
+          {topMatches.length > 0 && (
+            <div className="top-matches">
+              <h2>Top 5 Matches</h2>
+              <table className="matches-table">
+                <thead>
+                  <tr>
+                    <th>User 1</th>
+                    <th>User 2</th>
+                    <th>Match Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topMatches.map((match, index) => (
+                    <tr key={index}>
+                      <td>{match.user1} ({match.email1})</td>
+                      <td>{match.user2} ({match.email2})</td>
+                      <td>{match.score.toFixed(1)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Keep your original user table */}
           <div className="data-section">
             <h2>Current Users ({data.length})</h2>
             {data.length > 0 ? (
@@ -119,8 +180,8 @@ function App() {
         </div>
       ) : (
         <FormFlow 
-          returnToMain={() => setCurrentView("main")} 
-          onCompleteForm={handleFormComplete}
+          onComplete={handleFormComplete}
+          returnToMain={() => setCurrentView("main")}
         />
       )}
     </div>

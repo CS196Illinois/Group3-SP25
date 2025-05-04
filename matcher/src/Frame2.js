@@ -16,7 +16,6 @@ export const Frame2 = ({ goToFrame3 }) => {
     // Create the user data object to pass to the parent component
     const userData = { 
       name, 
-      id, 
       major, 
       year, 
       email 
@@ -37,10 +36,6 @@ export const Frame2 = ({ goToFrame3 }) => {
             <div className="form-row">
               <label>Name:</label>
               <input value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div className="form-row">
-              <label>ID:</label>
-              <input value={id} onChange={(e) => setId(e.target.value)} />
             </div>
             <div className="form-row">
               <label>Major:</label>
