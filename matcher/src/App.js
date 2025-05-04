@@ -15,50 +15,63 @@ function App() {
     if (!targetUser || allUsers.length < 2) return [];
     
     return allUsers
-      .filter(user => user.email !== targetUser.email) 
+      .filter(user => user.email !== targetUser.email)
       .map(user => {
         let score = 0;
         
-        // Classes matching (5pts max)
-        let classMatches = 0;
-        for (let i = 0; i < 5; i++) {
-          if (targetUser[`classes[${i}]`] && user[`classes[${i}]`] && 
-              targetUser[`classes[${i}]`] === user[`classes[${i}]`]) {
-            classMatches++;
-          }
+        // 1. Class Matching (Most Important - 60% weight)
+        const classMatches = [...Array(5)].reduce((count, _, i) => {
+          const targetClass = targetUser[`classes[${i}]`];
+          const userClass = user[`classes[${i}]`];
+          return count + (targetClass && userClass && targetClass === userClass ? 1 : 0);
+        }, 0);
+        score += classMatches * 5; // 5 points per matching class
+        
+        // 2. Availability Matching (30% weight)
+        const availabilityMatches = [...Array(2)].reduce((count, _, i) => {
+          const targetAvail = targetUser[`availability[${i}]`];
+          const userAvail = user[`availability[${i}]`];
+          return count + (targetAvail && userAvail && targetAvail === userAvail ? 1 : 0);
+        }, 0);
+        score += availabilityMatches * 4; // 4 points per matching slot
+        
+        // 3. Preferences (Only if both have preferences)
+        const hasPreferences = targetUser["preferences.studyStyle"] && user["preferences.studyStyle"];
+        if (hasPreferences) {
+          if (targetUser["preferences.studyStyle"] === user["preferences.studyStyle"]) score += 3;
+          if (targetUser["preferences.groupSize"] === user["preferences.groupSize"]) score += 2;
+          if (targetUser["preferences.studyLocation"] === user["preferences.studyLocation"]) score += 2;
+        } else {
+          score += 3; // Neutral score if preferences missing
         }
-        score += Math.min(classMatches, 5);
         
-        // Availability matching (5pts max)
-        for (let i = 0; i < 2; i++) {
-          if (targetUser[`availability[${i}]`] && user[`availability[${i}]`] && 
-              targetUser[`availability[${i}]`] === user[`availability[${i}]`]) {
-            score += 2.5;
-          }
+        // 4. Year and Major Similarity
+        if (targetUser.year === user.year) score += 2;
+        if (targetUser.major && user.major && 
+            targetUser.major.split('+')[0].trim() === user.major.split('+')[0].trim()) {
+          score += 2;
         }
-        
-        // Preferences matching
-        if (targetUser["preferences.studyStyle"] === user["preferences.studyStyle"]) score += 3;
-        if (targetUser["preferences.groupSize"] === user["preferences.groupSize"]) score += 2;
-        if (targetUser["preferences.studyLocation"] === user["preferences.studyLocation"]) score += 1;
-        
-        // Major matching
-        if (targetUser.major === user.major) score += 1;
         
         return {
           user,
-          score: Math.min(score, 17), // Max possible score
+          score: Math.min(score, 30), // New max score
           sharedClasses: [...Array(5)]
             .map((_, i) => 
               targetUser[`classes[${i}]`] && 
               targetUser[`classes[${i}]`] === user[`classes[${i}]`] ? 
               targetUser[`classes[${i}]`] : null
             )
+            .filter(Boolean),
+          matchingAvailability: [...Array(2)]
+            .map((_, i) => 
+              targetUser[`availability[${i}]`] === user[`availability[${i}]`] ?
+              targetUser[`availability[${i}]`] : null
+            )
             .filter(Boolean)
         };
       })
       .sort((a, b) => b.score - a.score)
-      .slice(0, 5); // Get top 5
+      .slice(0, 5);
   };
 
   
